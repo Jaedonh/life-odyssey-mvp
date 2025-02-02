@@ -17,7 +17,9 @@ function nextWeek() {
     }, 1000);
 
     // Progress time
-    age += 0.019;  // Advances by 1 week
+    age += 0.019; // Advances by 1 week
+    updatePropertyValues(); // Update real estate values
+    collectRent(); // Collect rental income
     updateUI();
     addEvent(generateEvent());
     saveGame();
