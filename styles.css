@@ -1,0 +1,52 @@
+/* Basic Layout */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Top Bar */
+header {
+    background: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Main Event Feed */
+main {
+    height: 300px;
+    overflow-y: auto;
+    background: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 20px;
+    text-align: left;
+}
+
+/* Bottom Navigation */
+nav {
+    background: #444;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav button {
+    background: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+nav button:hover {
+    background: #ddd;
+}
