@@ -5,6 +5,38 @@ function updateUI() {
     document.getElementById("happiness").innerText = `Happiness: ${happiness}%`;
     document.getElementById("money").innerText = `Wealth: $${money}`;
     document.getElementById("job").innerText = job;
+
+    // Check for critical conditions
+    if (health <= 0) {
+        addEvent("⚠️ You have died due to poor health!");
+        alert("Game Over: Your health reached 0.");
+        resetGame();
+    }
+    if (money < 0) {
+        addEvent("⚠️ You're in debt! Be careful.");
+    }
+}
+
+// Reset game on death
+function resetGame() {
+    localStorage.clear();
+    location.reload();
+}
+
+// Function to Show Job Selection
+function showJobMenu() {
+    let jobOptions = jobs.map(job => `<button onclick="applyForJob('${job.title}')">${job.title} ($${job.salary}/week)</button>`).join("<br>");
+    document.getElementById("event-feed").innerHTML += `<p><strong>Available Jobs:</strong></p>${jobOptions}`;
+}
+
+// Function to Show Relationships
+function showRelationships() {
+    let options = relationships.map(person =>
+        `<button onclick="interact('${person.name}', 'Call')">Call ${person.name}</button>
+         <button onclick="interact('${person.name}', 'Gift')">Gift ${person.name}</button>
+         <button onclick="interact('${person.name}', 'Ignore')">Ignore ${person.name}</button><br>`
+    ).join("");
+    document.getElementById("event-feed").innerHTML += `<p><strong>Relationships:</strong></p>${options}`;
 }
 
 // Function to Add an Event to the Text Feed
@@ -14,9 +46,4 @@ function addEvent(eventText) {
     newEvent.textContent = eventText;
     eventFeed.appendChild(newEvent);
     eventFeed.scrollTop = eventFeed.scrollHeight;
-}
-
-// Function to Show Different Menus
-function showMenu(menu) {
-    alert(`Opening ${menu} menu (not implemented yet).`);
 }
